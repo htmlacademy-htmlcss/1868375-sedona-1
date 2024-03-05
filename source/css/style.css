@@ -39,13 +39,33 @@
   overflow: hidden;
 }
 
-body {
+.page {
+  height: 100%;
+}
+
+.page-body {
   margin: 0;
+  height: 100%;
   font-family: 'PT Sans', 'Arial', sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;
   color: #000000;
+  background-color: #E6E6E6;
+}
+
+.page-wrapper {
+  max-width: 1200px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: #ffffff;
+}
+
+.container {
+  width: 1060px;
+  margin: 0 auto;
 }
 
 /*Кнопки*/
@@ -90,11 +110,30 @@ body {
   color: #FFFFFF;
 }
 
+/*Header*/
+.page-header-wrapper {
+  display: flex;
+}
+
+.logo-img {
+  display: block;
+  width: 140px;
+  height: 70px;
+  margin-right: 28px;
+}
+
 /*Меню*/
-.navigation-list {
-  list-style: none;
+.navigation-list,
+.navigation-user {
+  list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.navigation-list {
+  width: 624px;
+  outline: 2px solid red;
+  outline-offset: -2px;
 }
 
 .navigation-link {
@@ -107,6 +146,13 @@ body {
 }
 
 /*Навигация пользователя*/
+.navigation-user {
+  max-width: 268px;
+  margin-left: auto;
+  outline: 2px solid red;
+  outline-offset: -2px;
+}
+
 .navigation-user-search-btn {
   width: 20px;
   height: 20px;
@@ -126,6 +172,10 @@ body {
 }
 
 /*Промо-блок*/
+.main-index {
+  flex-grow: 1; /*занимает все доступное пространство для sticky-footer*/
+}
+
 .hero {
   min-height: 485px;
   background-image: url(./../images/hero-background.jpg);
@@ -143,9 +193,15 @@ body {
 /* Преимущества, Инфраструктура */
 .advantages-list,
 .infrastructure-list {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.advantages-list,
+.infrastructure-list {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .advantages-head,
@@ -168,6 +224,11 @@ body {
   text-transform: uppercase;
 }
 
+.advantages-head {
+  width: 651px;
+  margin: 0 auto;
+}
+
 .advantages-head-text,
 .infrastructure-head-text,
 .search-text,
@@ -178,7 +239,18 @@ body {
   line-height: 26px;
 }
 
-.advantages-item-box {
+.advantages-item-wrapper {
+  display: flex;
+}
+
+.advantages-item-box,
+.infrastructure-item {
+  width: 400px;
+  height: 385px;
+  border: 2px solid green;
+}
+
+.advantages-item-box-dark {
   background-color: #82B3D3;
   color: #FFFFFF;
 }
@@ -199,10 +271,24 @@ body {
 
 .advantages-item-img {
   display: block;
+  width: 800px;
+}
+
+.advantages-item-img-order {
+  order: -1;
+}
+
+.infrastructure-head {
+  width: 505px;
+  margin: 0 auto;;
 }
 
 /*Поиск гостиницы*/
+.search-wrapper {
+  width: 592px;
+  margin: 0 auto;
 
+}
 /*Подписка на рассылку*/
 .newsletter {
   min-height: 415px;
@@ -210,6 +296,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #71a0bf;
+}
+.newsletter-wrapper {
+  width: 684px;
+  margin: 0 auto;
 }
 
 .newsletter-title {
@@ -225,7 +315,15 @@ body {
   color: #FFFFFF;
 }
 
+.newsletter-form-field {
+  background-color: #F2F2F2;
+}
+
 /*Footer*/
+.page-footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
 .footer-phone-link {
   font-size: 40px;
   line-height: 40px;
@@ -235,9 +333,10 @@ body {
 
 /*Социальные кнопки*/
 .footer-social-list {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
 .footer-social-vk {
@@ -261,6 +360,10 @@ body {
 }
 
 /*страница Каталог*/
+.main-inner {
+  flex-grow: 1;
+}
+
 .main-inner-wrapper {
   min-height: 412px;
   background-image: url('./../images/catalog-background.jpg');
@@ -281,6 +384,8 @@ body {
 .breadcrumbs {
   margin: 0;
   padding: 0;
+  list-style: none;
+  display: flex;
 }
 
 .breadcrumbs-link {
@@ -291,11 +396,21 @@ body {
   color: #FFFFFF;
 }
 
+.catalog-filter-form {
+  display: flex;
+}
+
 /*Фильтр чекбоксы*/
 .catalog-filter-group {
   margin: 0;
   padding: 0;
-  list-style: none;
+  /* list-style: none; */
+  border: 2px solid rgb(73, 199, 241);
+}
+
+.filter-checkbox {
+  width: 150px;
+  margin-right: 70px;
 }
 
 .catalog-filter-title,
@@ -307,18 +422,30 @@ body {
 }
 
 .catalog-filter-list {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
   line-height: 21px;
   color: #FFFFFF;
+
 }
 
 .catalog-filter-label{
   line-height: 23px;
 }
 
+/*Фильтр радиокнопки*/
+.filter-radio {
+  width: 150px;
+  margin-right: 149px;
+}
+
 /*Фильтр диапазон цен*/
+.filter-price {
+  width: 288px;
+  margin-right: 70px;
+}
+
 .filter-price-line input::placeholder {
   font-family: 'PT Sans', 'Arial', sans-serif;
   font-size: 18px;
@@ -346,12 +473,18 @@ body {
 
 /*Каталог*/
 /*Сортировка выпадающий список */
+.product-sorting-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
 .product-sorting-title {
   margin: 0;
   text-transform: uppercase;
   font-size: 30px;
   font-weight: 700;
   line-height: 36px;
+  margin-right: 200px;
 }
 
 .product-sorting-select {
@@ -359,6 +492,7 @@ body {
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
+  margin-right: 70px;
 }
 
 .product-sorting-btn {
@@ -367,9 +501,17 @@ body {
 
 /*Карточки гостиниц*/
 .card-list {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-item {
+  width: 340px;
+  border: 2px solid orangered;
 }
 
 .card-link {
@@ -419,9 +561,11 @@ body {
 
 /*Пагинация*/
 .pagination-list {
-  list-style: none;
+  list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  gap: 8px;
 }
 
 .pagination-link {
@@ -443,30 +587,13 @@ body {
   line-height: 26px;
 }
 
-/*Подписка на рассылку*/
-.catalog-newsletter {
-  text-align: center;
+/*Подписка на рассылку Каталог*/
+.newsletter-catalog {
+  background-image: none;
+  background-color: #FFFFFF;
 }
 
-.catalog-newsletter-title {
-  margin: 0;
-  text-transform: uppercase;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 36px;
-}
-
-.catalog-newsletter-text {
-  margin: 0;
-  font-size: 22px;
-  line-height: 26px;
-}
-
-.catalog-newsletter-form-field {
-  font-family: inherit;
-  font-size: 18px;
-  line-height: 24px;
-  padding: 0;
-  border: none;
-  background-color: #F2F2F2;
+.newsletter-catalog-title,
+.newsletter-catalog-text {
+  color: #000000;
 }
